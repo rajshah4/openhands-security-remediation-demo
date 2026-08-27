@@ -25,7 +25,7 @@ def test_report_endpoint_returns_allowlisted_report() -> None:
 def test_report_endpoint_rejects_command_injection_payload() -> None:
     client = create_app().test_client()
 
-    response = client.get("/reports?name=inventory%3Buname%20-a")
+    response = client.get("/reports?name=inventory.txt%3Bprintf%20injected%3B%23")
 
     assert response.status_code == 404
 

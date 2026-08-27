@@ -4,10 +4,7 @@ rules:
     severity: ERROR
     languages:
       - python
-    mode: taint
-    pattern-sources:
-      - pattern: request.args.get(...)
-    pattern-sinks:
+    patterns:
       - pattern: subprocess.run(..., shell=True, ...)
     metadata:
       rule_id: flask-request-to-subprocess-shell

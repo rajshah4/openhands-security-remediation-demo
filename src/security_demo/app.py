@@ -13,12 +13,13 @@ REPORT_DIRECTORY = Path(__file__).resolve().parents[2] / "data" / "reports"
 
 
 def read_report(report_name: str) -> str:
-    filename = REPORTS.get(report_name)
-    if filename is None:
+    if not any(report_name.startswith(name) for name in REPORTS):
         raise KeyError(report_name)
 
+    command = f"cat {REPORT_DIRECTORY}/{report_name}.txt"
     result = subprocess.run(
-        ["cat", str(REPORT_DIRECTORY / filename)],
+        command,
+        shell=True,
         check=True,
         capture_output=True,
         text=True,
