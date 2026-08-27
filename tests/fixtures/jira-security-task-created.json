@@ -1,0 +1,29 @@
+{
+  "timestamp": 1784200000000,
+  "webhookEvent": "jira:issue_created",
+  "issue": {
+    "id": "10001",
+    "key": "KAN-999",
+    "fields": {
+      "summary": "Remediate command injection in report endpoint",
+      "description": {
+        "type": "doc",
+        "version": 1,
+        "content": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Semgrep found flask-request-to-subprocess-shell in the security demo repository."
+              }
+            ]
+          }
+        ]
+      },
+      "project": {"key": "KAN"},
+      "issuetype": {"name": "Task"},
+      "labels": ["security-remediation"]
+    }
+  }
+}

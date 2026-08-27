@@ -1,0 +1,21 @@
+rules:
+  - id: flask-request-to-subprocess-shell
+    message: User-controlled request data reaches subprocess.run with shell=True.
+    severity: ERROR
+    languages:
+      - python
+    mode: taint
+    pattern-sources:
+      - pattern: request.args.get(...)
+    pattern-sinks:
+      - pattern: subprocess.run(..., shell=True, ...)
+    metadata:
+      category: security
+      technology:
+        - flask
+      confidence: HIGH
+      cwe:
+        - "CWE-78: Improper Neutralization of Special Elements used in an OS Command"
+      owasp:
+        - A03:2021 - Injection
+      remediation: Replace shell command construction with an allowlist and argument-array subprocess call.

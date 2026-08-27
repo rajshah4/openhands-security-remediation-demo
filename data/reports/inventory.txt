@@ -1,0 +1,1 @@
+Current inventory: 14 cats, 9 dogs, 3 rabbits.

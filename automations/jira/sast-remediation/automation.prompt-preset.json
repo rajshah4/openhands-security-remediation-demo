@@ -1,0 +1,29 @@
+{
+  "name": "Security Demo - Jira SAST Remediation",
+  "preset": "prompt",
+  "prompt_file": "prompt.md",
+  "trigger": {
+    "type": "event",
+    "source": "jira-direct",
+    "on": "jira:issue_created",
+    "filter": "issue.fields.project.key == 'KAN' && issue.fields.issuetype.name == 'Task' && contains(issue.fields.labels, 'security-remediation')"
+  },
+  "repos": [
+    {
+      "url": "https://github.com/rajshah4/openhands-security-remediation-demo",
+      "ref": "demo/command-injection"
+    }
+  ],
+  "timeout": 1800,
+  "keep_alive": true,
+  "model": "Bedrock-Claude-Sonnet-4-5-fast",
+  "enabled": false,
+  "template": {
+    "id": "rajistics-jira-sast-remediation-demo",
+    "version": "1.0.0",
+    "config": {
+      "project": "KAN",
+      "label": "security-remediation"
+    }
+  }
+}

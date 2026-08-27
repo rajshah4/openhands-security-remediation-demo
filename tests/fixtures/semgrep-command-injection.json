@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "check_id": "flask-request-to-subprocess-shell",
+      "path": "src/security_demo/app.py",
+      "start": {"line": 31, "col": 18},
+      "end": {"line": 36, "col": 10},
+      "extra": {
+        "message": "User-controlled request data reaches subprocess.run with shell=True.",
+        "severity": "ERROR",
+        "metadata": {
+          "confidence": "HIGH",
+          "cwe": [
+            "CWE-78: Improper Neutralization of Special Elements used in an OS Command"
+          ]
+        },
+        "lines": "subprocess.run(command, shell=True, check=True, capture_output=True, text=True)"
+      }
+    }
+  ]
+}
