@@ -20,7 +20,7 @@
   "enabled": false,
   "template": {
     "id": "rajistics-jira-sast-remediation-demo",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "config": {
       "project": "KAN",
       "label": "security-remediation"
