@@ -37,3 +37,13 @@ def test_read_report_rejects_unknown_report() -> None:
         assert exc.args == ("../../etc/passwd",)
     else:
         raise AssertionError("unknown reports must be rejected")
+
+
+def test_read_report_rejects_shell_metacharacters() -> None:
+    """Regression test for CWE-78 command injection."""
+    try:
+        read_report("inventory; echo pwned")
+    except KeyError as exc:
+        assert exc.args == ("inventory; echo pwned",)
+    else:
+        raise AssertionError("shell metacharacters must be rejected")
