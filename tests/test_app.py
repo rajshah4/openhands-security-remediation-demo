@@ -30,6 +30,22 @@ def test_report_endpoint_rejects_command_injection_payload() -> None:
     assert response.status_code == 404
 
 
+def test_report_endpoint_rejects_shell_metacharacters() -> None:
+    client = create_app().test_client()
+
+    shell_metacharacter_payloads = [
+        "inventory;echo%20injected",
+        "inventory|whoami",
+        "inventory$(uname)",
+        "inventory`id`",
+        "inventory%26%26cat%20/etc/passwd",
+    ]
+
+    for payload in shell_metacharacter_payloads:
+        response = client.get(f"/reports?name={payload}")
+        assert response.status_code == 404, f"Payload should be rejected: {payload}"
+
+
 def test_read_report_rejects_unknown_report() -> None:
     try:
         read_report("../../etc/passwd")
