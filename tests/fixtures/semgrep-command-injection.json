@@ -1,8 +1,8 @@
 {
   "results": [
     {
-      "check_id": "flask-request-to-subprocess-shell",
-      "path": "src/security_demo/app.py",
+      "check_id": "security.rules.flask-request-to-subprocess-shell",
+      "path": "/workspace/openhands-security-remediation-demo/src/security_demo/app.py",
       "start": {"line": 31, "col": 18},
       "end": {"line": 36, "col": 10},
       "extra": {

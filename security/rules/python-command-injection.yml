@@ -10,6 +10,7 @@ rules:
     pattern-sinks:
       - pattern: subprocess.run(..., shell=True, ...)
     metadata:
+      rule_id: flask-request-to-subprocess-shell
       category: security
       technology:
         - flask
