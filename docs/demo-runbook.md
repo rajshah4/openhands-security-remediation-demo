@@ -4,7 +4,8 @@
 
 - OpenHands Enterprise: `https://app.replicated.rajistics.com`
 - security automation: `Security Demo - Jira SAST Remediation`
-- automation ID: `ea10d896-567f-41ea-a8cb-1d7b989affd9`
+- automation ID: `c408b0c4-5523-4500-9602-91bc915d7034`
+- template version: `1.0.1`
 - normal state: security automation disabled; `SDLC_1 - Jira to PR` enabled
 - Jira project: `KAN`
 - trigger label: `security-remediation`
