@@ -1,0 +1,25 @@
+# Tasks
+
+- [x] Create OpenSpec-style change artifacts (proposal, spec delta, design, tasks).
+- [x] Validate change artifacts structure.
+- [ ] Implement the security fix in `src/security_demo/app.py`:
+  - [ ] Replace `startswith()` validation with `REPORTS.get()` for exact matching.
+  - [ ] Convert shell string to argument array `["cat", str(REPORT_DIRECTORY / filename)]`.
+  - [ ] Remove `shell=True` parameter.
+- [ ] Add regression tests for comprehensive shell metacharacter coverage:
+  - [ ] Test additional metacharacters (`&&`, `||`, `|`, `$()`, backticks, `>`, `<`).
+  - [ ] Test adoptions endpoint (currently missing coverage).
+- [ ] Run validation suite:
+  - [ ] `uv run pytest -q` - verify all tests pass.
+  - [ ] `uv run ruff check .` - verify code quality.
+  - [ ] `uv run python scripts/run_sast.py --expect 0` - verify Semgrep finding is eliminated.
+- [ ] Create draft PR with evidence:
+  - [ ] Link to OpenSpec change artifacts.
+  - [ ] Include evidence waypoints.
+  - [ ] Document assumptions and non-goals.
+  - [ ] Show acceptance criteria status.
+  - [ ] List files changed and tests run.
+  - [ ] Note residual risks.
+  - [ ] Include OpenHands conversation link.
+  - [ ] Add AI disclosure footer.
+- [ ] Post Jira comment with PR link and validation results.
