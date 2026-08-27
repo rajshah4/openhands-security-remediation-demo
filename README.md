@@ -21,6 +21,13 @@ Jira Task
 
 OpenHands is the remediation and orchestration layer. The scanner remains the source of truth for detection.
 
+## Start here
+
+- [Customer demo and pricing plan](docs/customer-demo-plan.md)
+- [Repeatable operator runbook](docs/demo-runbook.md)
+- [Validated KAN-165 evidence](docs/evidence/KAN-165.md)
+
+
 ## Branches
 
 - `main`: clean reference implementation with zero findings.

@@ -28,3 +28,11 @@ uv run python scripts/run_sast.py --expect 0
 - Do not merge pull requests, change branch protection, or modify deployment infrastructure.
 - Keep the fix minimal and add a regression test that demonstrates the unsafe input is rejected.
 - Post status and evidence to Jira only through `scripts/comment_jira.py`.
+- In an Enterprise automation run, reference Jira secrets explicitly on the command that needs them:
+
+  ```bash
+  JIRA_API_BASE_URL="${JIRA_API_BASE_URL}" JIRA_API_TOKEN="${JIRA_API_TOKEN}" \
+    uv run python scripts/comment_jira.py <jira-key> "<evidence>"
+  ```
+
+- Never leave `${AUTOMATION_SESSION_URL}` or another placeholder in a PR or Jira comment. Verify the published text contains the exact `https://app.replicated.rajistics.com/conversations/...` URL before finishing.
