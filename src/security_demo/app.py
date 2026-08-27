@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import subprocess
 from pathlib import Path
 
 from flask import Flask, abort, jsonify, request
@@ -13,18 +12,11 @@ REPORT_DIRECTORY = Path(__file__).resolve().parents[2] / "data" / "reports"
 
 
 def read_report(report_name: str) -> str:
-    if not any(report_name.startswith(name) for name in REPORTS):
+    if report_name not in REPORTS:
         raise KeyError(report_name)
 
-    command = f"cat {REPORT_DIRECTORY}/{report_name}.txt"
-    result = subprocess.run(
-        command,
-        shell=True,
-        check=True,
-        capture_output=True,
-        text=True,
-    )
-    return result.stdout
+    report_file = REPORT_DIRECTORY / REPORTS[report_name]
+    return report_file.read_text()
 
 
 def create_app() -> Flask:
