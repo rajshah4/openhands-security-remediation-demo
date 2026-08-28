@@ -37,3 +37,21 @@ def test_read_report_rejects_unknown_report() -> None:
         assert exc.args == ("../../etc/passwd",)
     else:
         raise AssertionError("unknown reports must be rejected")
+
+
+def test_read_report_rejects_shell_metacharacters() -> None:
+    """Regression test for CWE-78: shell metacharacters must be rejected."""
+    payloads = [
+        "inventory; rm -rf /",
+        "inventory && whoami",
+        "inventory | cat /etc/passwd",
+        "inventory`id`",
+        "inventory$(whoami)",
+    ]
+    for payload in payloads:
+        try:
+            read_report(payload)
+        except KeyError as exc:
+            assert exc.args == (payload,)
+        else:
+            raise AssertionError(f"shell metacharacter payload must be rejected: {payload}")
